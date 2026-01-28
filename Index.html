@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Derge mylz Hospital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Basic security-related meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <style>
+        /* ====== COLOR PALETTE ======
+           Light blue:  #e0f2fe
+           Medium blue: #38bdf8
+           Dark blue:   #0c4a6e
+           Light green: #a7f3d0
+           White:       #ffffff
+        */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: #0f172a;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ===== HEADER & NAVBAR ===== */
+        header {
+            background: linear-gradient(90deg, #0c4a6e, #1d4ed8);
+            color: #fff;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.35);
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;          /* better on small screens */
+            row-gap: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #a7f3d0, #38bdf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0c4a6e;
+        }
+
+        .logo-text-main {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .logo-text-sub {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            font-size: 15px;
+            padding: 6px 2px; /* more tap area */
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        .nav-login {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: #a7f3d0;
+            color: #0f172a;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav-login:hover {
+            background: #22c55e;
+            color: #0f172a;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 70px 0 50px;
+            background: radial-gradient(circle at top left, #e0f2fe, #f9fafb);
+        }
+
+        .hero-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1 1 320px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 118, 110, 0.06);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            font-size: 13px;
+            color: #0f766e;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            color: #0f172a;
+        }
+
+        .hero-highlight {
+            color: #0c4a6e;
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            margin-bottom: 24px;
+            color: #475569;
+            max-width: 500px;
+        }
+
+        .hero-bullets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .hero-bullet {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #0f172a;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 4px 10px;
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+        }
+
+        .hero-bullet-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #38bdf8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9, #0c4a6e);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.3);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #0c4a6e;
+            border: 1px solid #0ea5e9;
+            padding: 12px 24px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0f2fe;
+        }
+
+        .hero-note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .hero-image {
+            flex: 1 1 280px;
+            min-height: 230px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #0c4a6e, #38bdf8);
+            box-shadow: 0 18px 35px rgba(15, 23, 42, 0.45);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #e0f2fe;
+        }
+
+        .hero-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .hero-card-status {
+            font-size: 12px;
+            background: rgba(16, 185, 129, 0.18);
+            border-radius: 999px;
+            padding: 4px 8px;
+        }
+
+        .hero-card-body {
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .hero-card-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .hero-pill {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.35);
+        }
+
+        .hero-card-footer {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #e0f2fe;
+            opacity: 0.85;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            margin-bottom: 24px;
+            color: #64748b;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .about-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 1px 6px rgba(15, 23, 42, 0.12);
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .about-highlight {
+            border-left: 3px solid #38bdf8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 6px rgba(15, 23, 42, 0.08);
+            border-top: 3px solid #0ea5e9;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #0f172a;
+        }
+
+        /* ===== CONTACT & MAP ===== */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 1px 6px rgba(15, 23, 42, 0.12);
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .contact-item {
+            margin-bottom: 8px;
+        }
+
+        .contact-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #94a3b8;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            color: #0f172a;
+        }
+
+        #map {
+            border-radius: 12px;
+            min-height: 220px;
+            width: 100%;
+        }
+
+        .location-btn {
+            margin-top: 10px;
+            font-size: 13px;
+            border: none;
+            border-radius: 999px;
+            padding: 8px 14px;
+            background: #0c4a6e;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .location-btn:hover {
+            filter: brightness(1.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 40px;
+            background-color: #0f172a;
+            color: #e5e7eb;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        /* ===== ANIMATIONS (scroll reveal) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up {
+            transform: translateY(20px);
+        }
+
+        .fade-left {
+            transform: translateX(20px);
+        }
+
+        .fade-right {
+            transform: translateX(-20px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Tablet layout */
+        @media (max-width: 992px) and (min-width: 769px) {
+            .hero-inner {
+                gap: 24px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+
+        /* Mobile layout */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 10px;
+                font-size: 14px;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            header {
+                padding: 10px 0;
+            }
+
+            .hero {
+                padding: 32px 0 24px;
+            }
+
+            .hero-inner {
+                flex-direction: column;
+            }
+
+            .hero-title {
+                font-size: 30px;
+            }
+
+            .about-grid,
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-bar">
+        <div class="logo">
+            <div class="logo-mark">D</div>
+            <div>
+                <div class="logo-text-main">Derge mylz Hospital</div>
+                <div class="logo-text-sub">Care. Trust. Healing.</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Will later connect to Laravel portal -->
+                <li><a class="nav-login" href="/system/login">Staff Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text reveal fade-up">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                24/7 Emergency • Trusted Specialists
+            </div>
+            <h1 class="hero-title">
+                Modern healthcare at<br>
+                <span class="hero-highlight">Derge mylz Hospital</span>
+            </h1>
+            <p class="hero-subtitle">
+                Compassionate care, advanced diagnostics, and experienced doctors – all in one place.
+                We are here for families across Dar es Salaam, every hour of the day.
+            </p>
+
+            <div class="hero-bullets">
+                <div class="hero-bullet">
+                    <span class="hero-bullet-dot"></span>
+                    Same‑day outpatient visits
+                </div>
+                <div class="hero-bullet">
+                    <span class="hero-bullet-dot"></span>
+                    Fully equipped lab & pharmacy
+                </div>
+                <div class="hero-bullet">
+                    <span class="hero-bullet-dot"></span>
+                    Insurance-friendly billing
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="tel:+255655786630">
+                    <button class="btn-primary">Call now for care</button>
+                </a>
+                <a href="#services">
+                    <button class="btn-secondary">View all services</button>
+                </a>
+            </div>
+
+            <p class="hero-note">
+                Open 24 hours • Emergency, outpatient, maternity, lab, and more.
+            </p>
+        </div>
+
+        <div class="hero-image reveal fade-left">
+            <div class="hero-card-header">
+                <div>
+                    <div class="hero-card-title">Today at Derge mylz</div>
+                    <div style="font-size: 12px; opacity: 0.9;">Live hospital overview</div>
+                </div>
+                <div class="hero-card-status">Online check‑in</div>
+            </div>
+            <div class="hero-card-body">
+                <p>
+                    Shorter waiting times and coordinated care between reception, doctors, lab,
+                    pharmacy, and billing – all powered by our digital hospital system.
+                </p>
+                <div class="hero-card-pills">
+                    <div class="hero-pill">Outpatient clinic</div>
+                    <div class="hero-pill">Emergency 24/7</div>
+                    <div class="hero-pill">Maternity</div>
+                    <div class="hero-pill">Lab & Imaging</div>
+                </div>
+            </div>
+            <div class="hero-card-footer">
+                This website will connect to a secure Laravel portal for staff access only.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container reveal fade-up">
+        <h2 class="section-title">About Derge mylz Hospital</h2>
+        <p class="section-subtitle">
+            A modern community hospital in Dar es Salaam, focused on safe, affordable care.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-card about-highlight">
+                For every patient, we combine compassionate care with evidence‑based medicine.
+                Our team of doctors, nurses, and specialists work together so that you feel heard,
+                respected, and supported at every step of your treatment.
+            </div>
+            <div class="about-card">
+                <strong>Key highlights</strong><br><br>
+                • 24/7 emergency department<br>
+                • Outpatient and specialist clinics<br>
+                • In‑house laboratory and pharmacy<br>
+                • Safe maternity and newborn care
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container reveal fade-up">
+        <h2 class="section-title">Our Services & Departments</h2>
+        <p class="section-subtitle">
+            Comprehensive medical services under one roof, so your family can stay close to home.
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-title">Outpatient Clinic</div>
+                General consultations, follow‑ups, and chronic disease care with experienced clinicians.
+            </div>
+            <div class="service-card">
+                <div class="service-title">Emergency 24/7</div>
+                Immediate care for accidents, sudden illnesses, and urgent medical conditions.
+            </div>
+            <div class="service-card">
+                <div class="service-title">Maternity & Newborn</div>
+                Antenatal care, safe delivery, and postnatal support for mothers and babies.
+            </div>
+            <div class="service-card">
+                <div class="service-title">Laboratory Services</div>
+                Routine and advanced tests to support fast, accurate diagnosis and treatment.
+            </div>
+            <div class="service-card">
+                <div class="service-title">Radiology & Imaging</div>
+                Ultrasound and other imaging services to guide clinical decisions.
+            </div>
+            <div class="service-card">
+                <div class="service-title">Pharmacy</div>
+                Quality, approved medicines with clear counselling on how to use them.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container reveal fade-up">
+        <h2 class="section-title">Contact & Location</h2>
+        <p class="section-subtitle">
+            Reach us anytime for emergencies, appointments, or general questions.
+        </p>
+
+        <div class="contact-layout">
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-label">Phone (24/7)</div>
+                    <div class="contact-value"><a href="tel:+255655786630">+255 655 786 630</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:info@dergemylz.go.tz">info@dergemylz.go.tz</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Address</div>
+                    <div class="contact-value">Dar es Salaam, Tanzania</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Hours</div>
+                    <div class="contact-value">Emergency: 24/7 • Clinics: Mon–Sun</div>
+                </div>
+
+                <button class="location-btn" id="locateMeBtn">
+                    Use my current location on the map
+                </button>
+                <p id="locationMessage" style="margin-top:6px;font-size:11px;color:#64748b;"></p>
+            </div>
+
+            <div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Derge mylz Hospital. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Scroll reveal with Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal');
+    const observerOptions = { threshold: 0.15 };
+
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+        revealOnScroll.observe(el);
+    });
+
+    // Header shadow/size change on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            header.style.boxShadow = '0 2px 12px rgba(15, 23, 42, 0.55)';
+            header.style.padding = '10px 0';
+        } else {
+            header.style.boxShadow = '0 2px 8px rgba(15, 23, 42, 0.35)';
+            header.style.padding = '14px 0';
+        }
+    });
+
+    // ===== GOOGLE MAP + GEOLOCATION =====
+    let map;
+    let marker;
+    const defaultPos = { lat: -6.7924, lng: 39.2083 }; // Dar es Salaam center[web:105][web:106]
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: defaultPos,
+            zoom: 13
+        });
+
+        marker = new google.maps.Marker({
+            position: defaultPos,
+            map: map,
+            title: 'Derge mylz Hospital (default)'
+        });
+    }
+
+    const locateBtn = document.getElementById('locateMeBtn');
+    const locMsg = document.getElementById('locationMessage');
+
+    if (locateBtn) {
+        locateBtn.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                locMsg.textContent = 'Geolocation is not supported by your browser.';
+                return;
+            }
+
+            locMsg.textContent = 'Getting your location…';
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    map.setCenter(pos);
+                    map.setZoom(15);
+
+                    if (marker) {
+                        marker.setMap(null);
+                    }
+
+                    marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: 'Your current location'
+                    });
+
+                    locMsg.textContent = 'Location found and map updated.';
+                },
+                (error) => {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            locMsg.textContent = 'Location permission denied by user.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            locMsg.textContent = 'Location information is unavailable.';
+                            break;
+                        case error.TIMEOUT:
+                            locMsg.textContent = 'Location request timed out.';
+                            break;
+                        default:
+                            locMsg.textContent = 'An unknown error occurred while getting location.';
+                    }
+                }
+            );
+        });
+    }
+</script>
+
+<!-- Google Maps JavaScript API – replace YOUR_GOOGLE_MAPS_API_KEY -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"
+        async defer></script>
+
+</body>
+</html>
